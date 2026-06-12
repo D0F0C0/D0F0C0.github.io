@@ -1,1 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
+      color: white;
+    }
+
+    /* ===== BACKGROUND ===== */
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 30, 30, 0.45);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      width: 100%;
+    }
+
+    nav ul li {
+      float: left;
+    }
+
+    nav ul li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== NOW CONTAINER ===== */
+    .now-container {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 120px 20px 80px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 36px;
+      margin: 0 0 8px;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      margin: 0 0 48px;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 0;
+      position: relative;
+      padding-bottom: 36px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 24px;
+      flex-shrink: 0;
+    }
+
+    .tl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+      flex-shrink: 0;
+      margin-top: 4px;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+
+    .tl-line {
+      width: 2px;
+      flex: 1;
+      background: rgba(255, 255, 255, 0.2);
+      margin-top: 6px;
+    }
+
+    .timeline-item:last-child .tl-line {
+      display: none;
+    }
+
+    .tl-right {
+      padding-left: 16px;
+      flex: 1;
+    }
+
+    .tl-title {
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
+
+    .tl-sub {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .now-container {
+        padding: 100px 16px 60px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Image -->
+  <div class="background-image">
+    <img
+      class="background-image"
+      src="https://upload-os-bbs.hoyolab.com/upload/2024/06/24/211705071/f17dbb9d729a30c58f9a20ad457457c3_7787687051675606849.png?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70"
+      alt="Background"
+    />
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Homepage</a></li>
+      <li><a href="#">Bookmark</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="#">About Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- Now Content -->
+  <div class="now-container">
+    <h1>Now</h1>
+    <p class="subtitle">06/12/2026</p>
+
+    <ul class="timeline">
+      <!-- Playing -->
+      <li class="timeline-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Playing</p>
+          <p class="tl-sub">Honkai: Star Rail Version 4.3</p>
+        </div>
+      </li>
+
+      <!-- Learning -->
+      <li class="timeline-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Learning</p>
+          <p class="tl-sub">English Grammar</p>
+        </div>
+      </li>
+
+      <!-- Reading -->
+      <li class="timeline-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Reading</p>
+          <p class="tl-sub">SuperBetter -- 游戏改变人生</p>
+        </div>
+      </li>
+
+      <!-- Thinking -->
+      <li class="timeline-item">
+        <div class="tl-left">
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-right">
+          <p class="tl-title">Thinking</p>
+          <p class="tl-sub">吃什么？</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>
