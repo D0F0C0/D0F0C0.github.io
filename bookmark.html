@@ -3,15 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>bookmark</title>
+  <title>My Music & Games</title>
   <style>
-    /* Global Elements */
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
       margin: 0;
+      min-height: 100vh;
+      position: relative;
+      color: white;
+    }
+
+    /* ===== BACKGROUND ===== */
+    .background-image {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
     }
 
     body::before {
@@ -20,24 +36,14 @@
       inset: 0;
       background: rgba(30, 30, 30, 0.45);
       backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
       pointer-events: none;
-      z-index: 0;
-    }
-
-    .background-image {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       z-index: -1;
     }
 
-    /* Navigation Bar */
-    ul {
+    /* ===== NAVIGATION ===== */
+    nav ul {
       list-style-type: none;
-      margin: 0;
-      padding: 0;
       overflow: hidden;
       background-color: rgba(0, 0, 0, 0.6);
       position: fixed;
@@ -46,33 +52,34 @@
       width: 100%;
     }
 
-    li { 
-      float: left; 
+    nav li {
+      float: left;
     }
 
-    li a {
+    nav li a {
       display: block;
       color: white;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
+      transition: background-color 0.3s;
     }
 
-    li a:hover { 
-      background-color: rgba(255,255,255,0.1); 
+    nav li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* Headers */
+    /* ===== HEADINGS ===== */
     h1 {
       color: white;
       text-align: center;
-      text-shadow: 6px 5px rgba(46,43,43,0.2);
+      text-shadow: 6px 5px rgba(46, 43, 43, 0.2);
       padding-top: 80px;
       position: relative;
       z-index: 1;
     }
 
-    /* Music Layout Table */
+    /* ===== MUSIC SECTION - FLIP CARDS ===== */
     table.center {
       margin-left: auto;
       margin-right: auto;
@@ -88,7 +95,6 @@
       vertical-align: top;
     }
 
-    /* Flip Cards */
     .flip-card {
       background-color: transparent;
       width: 180px;
@@ -103,7 +109,7 @@
       text-align: center;
       transition: transform 0.6s;
       transform-style: preserve-3d;
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
 
@@ -111,7 +117,8 @@
       transform: rotateY(180deg);
     }
 
-    .flip-card-front, .flip-card-back {
+    .flip-card-front,
+    .flip-card-back {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -122,7 +129,21 @@
       background-color: transparent;
     }
 
-    /* Card Front Design */
+    .flip-card-back {
+      color: white;
+      transform: rotateY(180deg);
+      text-shadow: 3px 2px rgba(46, 43, 43, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
     .cd-area {
       display: flex;
       justify-content: center;
@@ -143,15 +164,18 @@
 
     .cd-disc img {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 50%;
     }
 
     .cd-disc svg {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       z-index: 2;
     }
 
@@ -159,8 +183,8 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       position: relative;
       z-index: 3;
     }
@@ -170,34 +194,19 @@
       font-weight: bold;
       color: white;
       margin: 4px 8px 2px;
-      text-shadow: 1px 1px rgba(0,0,0,0.4);
+      text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
     }
 
     .card-artist {
       font-size: 11px;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.8);
       margin: 0 8px 8px;
-    }
-
-    /* Card Back Design */
-    .flip-card-back {
-      color: white;
-      transform: rotateY(180deg);
-      text-shadow: 3px 2px rgba(46,43,43,0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
-      box-sizing: border-box;
-      background-color: rgba(0,0,0,0.45);
-      backdrop-filter: blur(6px);
     }
 
     .back-title {
       font-size: 13px;
       font-weight: bold;
-      border-bottom: 1px solid rgba(255,255,255,0.4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
       padding-bottom: 6px;
       margin-bottom: 8px;
       width: 100%;
@@ -211,7 +220,7 @@
       overflow-y: auto;
     }
 
-    /* Games Section CSS */
+    /* ===== VIDEO GAMES SECTION ===== */
     .games-section {
       position: relative;
       z-index: 1;
@@ -228,9 +237,11 @@
       gap: 30px;
       background-color: rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border-radius: 16px;
       padding: 24px 32px;
       width: 700px;
+      max-width: 90vw;
     }
 
     .game-cover img {
@@ -251,7 +262,7 @@
       color: white;
       font-size: 20px;
       margin: 0;
-      text-shadow: 2px 2px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     }
 
     .game-screenshot img {
@@ -260,34 +271,61 @@
       object-fit: cover;
       max-height: 180px;
     }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .game-block {
+        flex-direction: column;
+        width: 90vw;
+        text-align: center;
+      }
+
+      table.center {
+        display: block;
+        overflow-x: auto;
+      }
+
+      table.center td {
+        display: block;
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <!-- Background Image -->
+  <div class="background-image">
+    <img
+      class="background-image"
+      src="https://upload-os-bbs.hoyolab.com/upload/2024/04/07/17138284/3f776f18c7b0d42e74e93c3a4f140436_7542106153591163992.jpg"
+      alt="Background"
+    />
+  </div>
 
-  <!-- Fullscreen Background Image Wrapper -->
-  <img class="background-image" src="https://hoyolab.com" alt="Background"/>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#">Homepage</a></li>
+      <li><a href="#">Now</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">About Me</a></li>
+    </ul>
+  </nav>
 
-  <!-- Navigation Bar -->
-  <ul>
-    <li><a href="#">Homepage</a></li>
-    <li><a href="#">Now</a></li>
-    <li><a href="#">Work</a></li>
-    <li><a href="#">About Me</a></li>
-  </ul>
-
-  <!-- Music Title Elements -->
+  <!-- MUSIC SECTION -->
   <h1>MUSIC</h1>
 
-  <!-- Music Cards Container -->
   <table class="center">
     <tr>
+      <!-- Card 1: Show Me Love -->
       <td>
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="cd-area">
                 <div class="cd-disc">
-                  <img src="https://media-amazon.com" alt="SHOW ME LOVE">
+                  <img src="https://m.media-amazon.com/images/I/51BMrBkf9kL._UXNaN_FMjpg_QL85_.jpg" alt="Show Me Love">
                   <svg width="80" height="80" viewBox="0 0 80 80">
                     <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-dasharray="10 5"/>
                     <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
@@ -302,20 +340,22 @@
             <div class="flip-card-back">
               <div class="back-title">Show Me Love</div>
               <div class="back-lyrics">Show me love
-                Don't need no money
+Don't need no money
 Don't need nobody
 Just need your body</div>
             </div>
           </div>
         </div>
       </td>
+
+      <!-- Card 2: The Bird Song -->
       <td>
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="cd-area">
                 <div class="cd-disc">
-                  <img src="https://spotifycdn.com" alt="The Bird Song">
+                  <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84443f7fb36526ca6747a5a7b6" alt="The Bird Song">
                   <svg width="80" height="80" viewBox="0 0 80 80">
                     <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-dasharray="10 5"/>
                     <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
@@ -330,22 +370,24 @@ Just need your body</div>
             <div class="flip-card-back">
               <div class="back-title">The Bird Song</div>
               <div class="back-lyrics">She was a bird
-                I was an arrow
-Both of us sure we were 
-                sword and a sparrow
+I was an arrow
+Both of us sure we were
+sword and a sparrow
 Still, when we flew
-                We never knew </div>
+We never knew</div>
             </div>
           </div>
         </div>
       </td>
+
+      <!-- Card 3: 一程山路 -->
       <td>
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="cd-area">
                 <div class="cd-disc">
-                  <img src="https://scdn.co" alt="一程山路">
+                  <img src="https://i.scdn.co/image/ab67616d00001e02a1816c0680f7597a5741abe1" alt="一程山路">
                   <svg width="80" height="80" viewBox="0 0 80 80">
                     <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-dasharray="10 5"/>
                     <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
@@ -360,21 +402,143 @@ Still, when we flew
             <div class="flip-card-back">
               <div class="back-title">一程山路</div>
               <div class="back-lyrics">潺潺流水终于穿过了
-                群山一座座
+群山一座座
 好像多年之后你依然执着
 白云是否也听过你的诉说
-笑着你笑着我
-</div>
+笑着你笑着我</div>
             </div>
           </div>
         </div>
       </td>
     </tr>
+
     <tr>
+      <!-- Card 4: 路过人间 -->
       <td>
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <div class="cd-area">
                 <div class="cd-disc">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWkAJV-B-uLj9dkhCD_kTixeNnCYB6gvHxaQ&s" alt="路过人间">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                    <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-dasharray="10 5"/>
+                    <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+                    <circle cx="40" cy="40" r="18" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  </svg>
+                  <div class="cd-hole"></div>
+                </div>
+              </div>
+              <p class="card-name">路过人间</p>
+              <p class="card-artist">郁可唯</p>
+            </div>
+            <div class="flip-card-back">
+              <div class="back-title">路过人间</div>
+              <div class="back-lyrics">人对爱和永远 应该有幻觉
+路过人间 也才几十年
+却为了爱 勇于蹉跎岁月
+辜负了谁 再被谁亏欠
+路过人间 就为了这些</div>
+            </div>
+          </div>
+        </div>
+      </td>
 
+      <!-- Card 5: 昔涟 -->
+      <td>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="cd-area">
+                <div class="cd-disc">
+                  <img src="https://i.kfs.io/album/global/286509622,0v1/fit/500x500.jpg" alt="昔涟">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                    <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-dasharray="10 5"/>
+                    <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+                    <circle cx="40" cy="40" r="18" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  </svg>
+                  <div class="cd-hole"></div>
+                </div>
+              </div>
+              <p class="card-name">昔涟</p>
+              <p class="card-artist">张韶涵</p>
+            </div>
+            <div class="flip-card-back">
+              <div class="back-title">昔涟</div>
+              <div class="back-lyrics">当漪涟 消散 万千 不见
+永恒和瞬间都 被爱意成全
+我的明天叫做昨天 Hoo~
+要相信 浪漫 一如 初见
+请笑着 向我 道别
+最后这一页 就让它无言
+我会在扉页 等待你续写 起点</div>
+            </div>
+          </div>
+        </div>
+      </td>
+
+      <!-- Card 6: Lemon -->
+      <td>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="cd-area">
+                <div class="cd-disc">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/1/12/Kenshi_Yonezu_-_Lemon.png" alt="Lemon">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                    <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-dasharray="10 5"/>
+                    <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+                    <circle cx="40" cy="40" r="18" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                  </svg>
+                  <div class="cd-hole"></div>
+                </div>
+              </div>
+              <p class="card-name">Lemon</p>
+              <p class="card-artist">Kenshi Yonezu</p>
+            </div>
+            <div class="flip-card-back">
+              <div class="back-title">Lemon</div>
+              <div class="back-lyrics">夢ならばどれほどよかったでしょう
+未だにあなたのことを夢にみる
+忘れた物を取りに帰るように
+古びた思い出の埃を払う</div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- VIDEO GAMES SECTION -->
+  <h1>Video Game</h1>
+
+  <div class="games-section">
+    <!-- Honkai: Star Rail -->
+    <div class="game-block">
+      <div class="game-cover">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QE6S7578d72jsLWhMumtXInYosAVT7AdCQ&s" alt="Honkai: Star Rail">
+      </div>
+      <div class="game-info">
+        <h2>Honkai: Star Rail</h2>
+        <div class="game-screenshot">
+          <img src="https://fastcdn.hoyoverse.com/content-v2/hkrpg/160601/32ccf6499b1655c70be410997d3c64e0_1347928807995488832.jpg" alt="Honkai: Star Rail screenshot">
+        </div>
+      </div>
+    </div>
+
+    <!-- Minecraft -->
+    <div class="game-block">
+      <div class="game-cover">
+        <img src="https://www.minecraft.net/content/dam/minecraftnet/franchise/logos/Homepage_Download-Launcher_Creeper-Logo_500x500.png" alt="Minecraft">
+      </div>
+      <div class="game-info">
+        <h2>Minecraft</h2>
+        <div class="game-screenshot">
+          <img src="https://www.thespike.gg/_next/image?url=https%3A%2F%2Fthespike-strapi-cms.s3.us-east-1.amazonaws.com%2Fsildurs_vibrant_545e8e4b8c.jpg&w=2048&q=75" alt="Minecraft screenshot">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
