@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
+      color: white;
+    }
+
+    /* ===== BACKGROUND ===== */
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 30, 30, 0.45);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      width: 100%;
+    }
+
+    nav ul li {
+      float: left;
+    }
+
+    nav ul li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== WORK CONTAINER ===== */
+    .work-container {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 140px 20px 80px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 36px;
+      margin: 0 0 8px;
+      text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      margin: 0 0 60px;
+    }
+
+    /* ===== TASK / PROGRESS BAR ===== */
+    .task-block {
+      margin-bottom: 48px;
+    }
+
+    .task-label {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin: 0 0 10px;
+    }
+
+    .task-name {
+      color: white;
+      font-size: 16px;
+      margin: 0 0 14px;
+    }
+
+    .bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: white;
+      transition: width 1s ease-out;
+    }
+
+    .bar-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .bar-pct {
+      color: white;
+      font-size: 12px;
+    }
+
+    .bar-status {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* ===== TERMINAL LINE ===== */
+    .terminal-line {
+      color: rgba(255, 255, 255, 0.3);
+      font-family: monospace;
+      font-size: 12px;
+      margin-top: 60px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .work-container {
+        padding: 120px 16px 60px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Image -->
+  <div class="background-image">
+    <img
+      class="background-image"
+      src="https://i.ytimg.com/vi/NNZSKqiDr-s/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBxmuC0FqSVMMaCI4_r4tBzd3xfkw"
+      alt="Background"
+    />
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Homepage</a></li>
+      <li><a href="#">Bookmark</a></li>
+      <li><a href="#">Now</a></li>
+      <li><a href="#">About Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- Work Content -->
+  <div class="work-container">
+    <h1>Work</h1>
+    <p class="subtitle">still going.</p>
+
+    <!-- Task 1: CSA Final Project -->
+    <div class="task-block">
+      <p class="task-label">01</p>
+      <p class="task-name">CSA Final Project</p>
+      <div class="bar-wrap">
+        <div class="bar-fill" style="width: 99%;"></div>
+      </div>
+      <div class="bar-meta">
+        <span class="bar-pct">??%</span>
+        <span class="bar-status">???</span>
+      </div>
+    </div>
+
+    <!-- Task 2: Physics Regent -->
+    <div class="task-block">
+      <p class="task-label">02</p>
+      <p class="task-name">Physics Regent</p>
+      <div class="bar-wrap">
+        <div class="bar-fill" style="width: 100%;"></div>
+      </div>
+      <div class="bar-meta">
+        <span class="bar-pct">100%</span>
+        <span class="bar-status">completed</span>
+      </div>
+    </div>
+
+    <!-- Task 3: AB Calculus Journey -->
+    <div class="task-block">
+      <p class="task-label">03</p>
+      <p class="task-name">My AB Calculus Journey Project</p>
+      <div class="bar-wrap">
+        <div class="bar-fill" style="width: 100%;"></div>
+      </div>
+      <div class="bar-meta">
+        <span class="bar-pct">100%</span>
+        <span class="bar-status">completed</span>
+      </div>
+    </div>
+
+    <p class="terminal-line">// more coming soon...</p>
+  </div>
+
+</body>
+</html>
