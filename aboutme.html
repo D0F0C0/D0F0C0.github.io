@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessica - About Me</title>
+    <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: url("https://images8.alphacoders.com/132/1326562.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 30, 30, 0.45);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      width: 100%;
+    }
+
+    nav ul li { float: left; }
+
+    nav ul li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover { background-color: rgba(255,255,255,0.1); }
+
+    .about-container {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 120px 20px 80px;
+    }
+
+    /* 头像 */
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .avatar-wrap img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.4);
+    }
+
+    /* 名字 */
+    .name {
+      color: white;
+      font-size: 28px;
+      text-align: center;
+      margin: 0 0 6px;
+      text-shadow: 2px 2px rgba(0,0,0,0.3);
+    }
+
+    .tagline {
+      color: rgba(255,255,255,0.45);
+      font-size: 13px;
+      text-align: center;
+      margin: 0 0 52px;
+    }
+
+    /* 每个板块 */
+    .section {
+      margin-bottom: 44px;
+    }
+
+    .section-label {
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    .section-title {
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      margin: 0 0 4px;
+    }
+
+    .section-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      margin: 0 0 16px;
+      line-height: 1.6;
+    }
+
+    .section-img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      max-height: 200px;
+      display: block;
+    }
+
+    /* 分割线 */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin: 0 0 44px;
+    }
+    </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Homepage</a></li>
+      <li><a href="#">Bookmark</a></li>
+      <li><a href="#">Now</a></li>
+      <li><a href="#">Work</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-container">
+
+    <!-- 头像 -->
+    <div class="avatar-wrap">
+      <img src="https://pbs.twimg.com/profile_images/2017475688941666304/TBes2TE-_400x400.jpg" alt="avatar">
+    </div>
+
+    <h1 class="name">Jessica</h1>
+    <p class="tagline">关关过</p>
+
+    <!-- 高中 -->
+    <div class="section">
+      <p class="section-label">High School</p>
+      <p class="section-title">Franklin D. Roosevelt High School</p>
+      <p class="section-sub">Senior · New York</p>
+      <img class="section-img" src="https://3.files.edl.io/39de/17/06/05/224217-a5b10a3b-4272-43d8-b0fd-fb4c9ece83d9" alt="FDR High School">
+    </div>
+
+    <hr class="divider">
+
+    <!-- 大学 -->
+    <div class="section">
+      <p class="section-label">Admitted Student</p>
+      <p class="section-title">Baruch College</p>
+      <p class="section-sub">Major: Accounting</p>
+      <img class="section-img" src="https://media.licdn.com/dms/image/v2/C4E22AQGSBIMaweaInw/feedshare-shrink_800/feedshare-shrink_800/0/1671739231030?e=2147483647&v=beta&t=kL3S9415Kr76Ys_hLVCkq3N7DdFTNOg2KhbLPlURq3Y" alt="Baruch College">
+    </div>
+
+    <hr class="divider">
+
+    <!-- 来自 -->
+    <div class="section">
+      <p class="section-label">From</p>
+      <p class="section-title">Fuzhou, China</p>
+      <p class="section-sub">福建省福州市</p>
+      <img class="section-img" src="https://img2.chinadaily.com.cn/images/202208/04/62eb227ea310fd2bec9a3948.jpeg" alt="Fuzhou">
+    </div>
+
+    <hr class="divider">
+
+    <!-- 所在地 -->
+    <div class="section">
+      <p class="section-label">Currently</p>
+      <p class="section-title">New York, NY</p>
+      <p class="section-sub">United States</p>
+      <img class="section-img" src="https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/shutterstock_329662223_ss_non-editorial_3_csm8lw?_a=BAVAZGDY0" alt="New York">
+    </div>
+
+  </div>
+</body>
+</html>
